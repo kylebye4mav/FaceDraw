@@ -5,9 +5,9 @@ package shapes;
  */
  public abstract class Face extends Shape {
 
- 	public static final HAPPY_STATE = 0;
- 	public static final NEUTRAL_STATE = 1;
- 	public static final SAD_STATE = 2;
+ 	public static final int HAPPY_STATE = 0;
+ 	public static final int NEUTRAL_STATE = 1;
+ 	public static final int SAD_STATE = 2;
 
  	private int faceState;
 

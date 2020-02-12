@@ -1,5 +1,4 @@
-package shapes.basic;
-
+package shapes;
 
 public class Oval extends Shape {
 
