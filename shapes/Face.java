@@ -3,6 +3,7 @@ package shapes;
 /**
  * @author Kyle Bye
  */
+@SuppressWarnings("serial")
  public abstract class Face extends Shape {
 
  	public static final int HAPPY_STATE = 0;

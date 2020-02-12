@@ -1,5 +1,6 @@
-package shapes.basic;
+package shapes;
 
+import javax.swing.JComponent;
 // javax.swing packages
 import javax.swing.JPanel;
 
@@ -10,6 +11,7 @@ import java.awt.Graphics;
 /**
  * @author Kyle Bye
  */
+@SuppressWarnings("serial")
 public class Oval extends Shape {
 
 	private int radiusX, radiusY;
@@ -26,8 +28,11 @@ public class Oval extends Shape {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 
-		g.setColor(color);
-		g.fillOval(x, y, getWidth(), getHeight());
+		g.setColor(getColor());
+		g.drawOval(getX(), getY(), getWidth(), getHeight());
+		g.fillOval(getX(), getY(), getWidth(), getHeight());
+
+		System.out.println("Drawing Oval...");
 	}
 
 	// Constructors
@@ -39,12 +44,13 @@ public class Oval extends Shape {
 		this(0, 0, radiusXIn, radiusYIn, Color.WHITE);
 	}
 
-	public Oval(int x, int y, int radiusXIn int radiusYIn) {
+	public Oval(int x, int y, int radiusXIn, int radiusYIn) {
 		this(x, y, radiusXIn, radiusYIn, Color.WHITE);
 	}
 
 	public Oval(int x, int y, int radiusXIn, int radiusYIn, Color colorIn) {
 		super(x, y, radiusXIn*2, radiusYIn*2, colorIn);
+		setOpaque(false);
 	}
 
 }
