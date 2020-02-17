@@ -1,60 +1,81 @@
 package shapes;
 
-// javax.swing packages
 import javax.swing.JPanel;
 
-// java.awt packages
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics;
 
 /**
  * @author Kyle Bye
+ * @see JPanel
  */
 @SuppressWarnings("serial")
 public abstract class Shape extends JPanel {
 
-	// Properties
-	private int x, y;
-	private int width, height;
-	private Color color;
+    // Members
+    private Color color;
 
-	// Getters
-	public int getX() { return x; }
-	public int getY() { return y; }
-	public int getWidth() { return width; }
-	public int getHeight() { return height; }
-	public Color getColor() { return color; }
+    // Getters 
+    public Color getColor() {
 
-	public Dimension getPreferredSize() {
-		return new Dimension(width, height);
-	}
+        return color;
 
-	// Setters
-	public void setX(int xIn) { x = xIn; }
-	public void setY(int yIn) { y = yIn; }
-	public void setWidth(int widthIn) { width = widthIn; }
-	public void setHeight(int heightIn) { height = heightIn; }
-	public void setColor(Color colorIn) { color = colorIn; }
+    }
 
-	// Constructors
-	protected Shape() {
-		this(0, 0, 0, 0, Color.WHITE);
-	}
+    // Setters
+    public void setColor(Color colorIn) {
 
-	protected Shape(int widthIn, int heightIn) {
-		this(0, 0, widthIn, heightIn, Color.WHITE);
-	}
+        color = colorIn;
 
-	protected Shape(int xIn, int yIn, int widthIn, int heightIn) {
-		this(0, 0, widthIn, heightIn, Color.WHITE);
-	}
+    }
 
-	protected Shape(int xIn, int yIn, int widthIn, int heightIn, Color colorIn) {
-		setX(xIn); setY(yIn);
-		setWidth(widthIn); setHeight(heightIn);
-		//setSize(widthIn, heightIn);
-		setColor(colorIn);
-	}
+    // Other Methods
+    @Override
+    public void paintComponent(Graphics g) {
+
+        super.paintComponent(g);
+
+    }
+
+    @Override
+    public String toString() {
+
+        return String.format(
+            "SHAPE (X:%d Y:%d W:%d H:%d); ", 
+            getX(), getY(), getWidth(), getHeight()
+            );
+
+    }
+
+    // Constructors 
+    public Shape() {
+
+        this(0, 0, 0, 0, Color.WHITE);
+
+    }
+
+    public Shape(int widthIn, int heightIn) {
+
+        this(0, 0, widthIn, heightIn, Color.WHITE);
+
+    }
+
+    public Shape(int xIn, int yIn, int widthIn, int heightIn) {
+
+        this(xIn, yIn, widthIn, heightIn, Color.WHITE);
+
+    }
+
+    public Shape(int xIn, int yIn, int widthIn, int heightIn, Color colorIn) {
+
+        super();
+        setLayout(null);
+        setBounds(xIn, yIn, widthIn, heightIn);
+        setColor(colorIn);
+        setBackground(new Color(0,0,0,0));
+        setOpaque(true);
+        setVisible(true);
+
+    }
 
 }

@@ -1,56 +1,82 @@
 package shapes;
 
-import javax.swing.JComponent;
-// javax.swing packages
 import javax.swing.JPanel;
 
-// java.awt packages
 import java.awt.Color;
 import java.awt.Graphics;
 
 /**
  * @author Kyle Bye
+ * @see Shape
+ * @see JPanel
  */
 @SuppressWarnings("serial")
 public class Oval extends Shape {
 
-	private int radiusX, radiusY;
+    // Properties
+    private int radiusX;
+    private int radiusY;
 
-	// Getters
-	public int getRadiusX() { return radiusX; }
-	public int getRadiusY() { return radiusY; }
+    // Getters
+    public int getRadiusX() { return radiusX; }
+    public int getRadiusY() { return radiusY; }
 
-	// Setters
-	public void setRadiusX(int radiusXIn) { radiusX = radiusXIn; }
-	public void setRadiusY(int radiusYIn) { radiusY = radiusYIn; }
+    // Setters
+    public void setRadiusX(int radiusXIn) { 
+        if (radiusXIn < 0) radiusX = radiusXIn;
+    }
 
-	@Override
-	public void paintComponent(Graphics g) {
-		super.paintComponent(g);
+    public void setRadiusY(int radiusYIn) {
+        if (radiusYIn < 0) radiusY = radiusYIn;
+    }
 
-		g.setColor(getColor());
-		g.drawOval(getX(), getY(), getWidth(), getHeight());
-		g.fillOval(getX(), getY(), getWidth(), getHeight());
+    // Other Methods
+    @Override
+    public void paintComponent(Graphics g) {
 
-		System.out.println("Drawing Oval...");
-	}
+        super.paintComponent(g);
 
-	// Constructors
-	public Oval() {
-		this(0, 0, 0, 0, Color.WHITE);
-	}
+        g.setColor(getColor());
+        g.fillOval(0, 0, getWidth(), getHeight());
+        System.out.format(
+            "Oval @ x:%d; y:%d; radX:%d; radY: %d\n", 
+            getX(), getY(), getRadiusX(), getRadiusY()
+        );
 
-	public Oval(int radiusXIn, int radiusYIn) {
-		this(0, 0, radiusXIn, radiusYIn, Color.WHITE);
-	}
+    }
 
-	public Oval(int x, int y, int radiusXIn, int radiusYIn) {
-		this(x, y, radiusXIn, radiusYIn, Color.WHITE);
-	}
+    @Override
+    public String toString() {
 
-	public Oval(int x, int y, int radiusXIn, int radiusYIn, Color colorIn) {
-		super(x, y, radiusXIn*2, radiusYIn*2, colorIn);
-		setOpaque(false);
-	}
+        return super.toString() + "Oval";
+
+    }
+
+    // Constructors
+    public Oval() {
+
+        this(0, 0, 0, 0, Color.WHITE);
+
+    }
+    
+    public Oval(int radiusXIn, int radiusYIn) {
+
+        this(0, 0, radiusXIn, radiusYIn, Color.WHITE);
+
+    }
+
+    public Oval(int xIn, int yIn, int radiusXIn, int radiusYIn) {
+
+        this(xIn, yIn, radiusXIn, radiusYIn, Color.WHITE);
+
+    }
+
+    public Oval(int xIn, int yIn, int radiusXIn, int radiusYIn, Color colorIn) {
+
+        super(xIn, yIn, radiusXIn*2, radiusYIn*2, colorIn); 
+        setRadiusX(radiusXIn);
+        setRadiusY(radiusYIn);  
+
+    }
 
 }

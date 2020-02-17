@@ -18,10 +18,13 @@ public class FaceDrawFrame extends JFrame {
 		
 		super();
 
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(0, 0, 1000, 1000);
+		//setLayout();
 
-		add(new FaceDrawPanel(), BorderLayout.CENTER);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(0, 0, 600, 400);
+		setResizable(false);
+
+		getContentPane().add(new FaceDrawPanel(getWidth(), getHeight()));
 
 	}
 
