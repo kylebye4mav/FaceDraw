@@ -41,9 +41,9 @@ public abstract class Shape extends JPanel {
     public String toString() {
 
         return String.format(
-            "SHAPE (X:%d Y:%d W:%d H:%d); ", 
+            "SHAPE (x:%d y:%d width:%d height:%d); ", 
             getX(), getY(), getWidth(), getHeight()
-            );
+        );
 
     }
 

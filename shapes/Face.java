@@ -5,13 +5,21 @@ import javax.swing.JPanel;
 import java.awt.Color;
 import java.awt.Graphics;
 
+/**
+ * @author Kyle Bye
+ * @see Oval
+ * @see SemiOval
+ * @see JPanel
+ */
 @SuppressWarnings("serial")
-public class Face extends Oval {
+public final class Face extends Oval {
 
+    // Static Properties
     public final static int SAD_STATE = 0;
     public final static int NEUTRAL_STATE = 1;
     public final static int HAPPY_STATE = 2;
 
+    // Properties
     private int faceState;
     private Oval[] eyes;
     private Shape mouth;
@@ -62,13 +70,18 @@ public class Face extends Oval {
 
         super.paintComponent(g);
 
+        System.out.println(toString());
+
     }
 
     public String toString() {
-        return super.toString() + String.format(
-            "; Face(hS:%d) - Eye[0]: %s - Eye[1]: %s; ", 
-            faceState, eyes[0].toString(), eyes[1].toString()
+
+        return String.format(
+            "%sFace(\n\t(faceState: %d); \n\t(eyes[0]: %s); \n\t(eyes[1]: %s); \n\t(mouth: %s) );\n", 
+            super.toString(), faceState, eyes[0].toString(), eyes[1].toString(),
+            mouth.toString()
         );
+
     }
 
     // Constructors
@@ -110,8 +123,14 @@ public class Face extends Oval {
                 new Oval(diameterX - 2*(diameterX/4), diameterY/4, radiusXIn/4, radiusYIn/4, Color.WHITE)
             }
         );
-        setMouth(new Oval());
+        setMouth(
+            new SemiOval(
+                diameterX/4, diameterY - (diameterY/3), radiusXIn/2, radiusYIn/2, Color.WHITE, SemiOval.DIRECTION_UP
+                )
+        );
+       
         for (Oval eye : eyes) add(eye);
+        add(mouth);
 
     }
 

@@ -23,11 +23,11 @@ public class Oval extends Shape {
 
     // Setters
     public void setRadiusX(int radiusXIn) { 
-        if (radiusXIn < 0) radiusX = radiusXIn;
+        if (radiusXIn >= 0) radiusX = radiusXIn;
     }
 
     public void setRadiusY(int radiusYIn) {
-        if (radiusYIn < 0) radiusY = radiusYIn;
+        if (radiusYIn >= 0) radiusY = radiusYIn;
     }
 
     // Other Methods
@@ -38,17 +38,16 @@ public class Oval extends Shape {
 
         g.setColor(getColor());
         g.fillOval(0, 0, getWidth(), getHeight());
-        System.out.format(
-            "Oval @ x:%d; y:%d; radX:%d; radY: %d\n", 
-            getX(), getY(), getRadiusX(), getRadiusY()
-        );
 
     }
 
     @Override
     public String toString() {
 
-        return super.toString() + "Oval";
+        return String.format(
+            "%sOval(radiusX:%d; radiusY: %d); ", 
+            super.toString(), getRadiusX(), getRadiusY()
+        );
 
     }
 
