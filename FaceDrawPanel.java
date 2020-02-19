@@ -3,12 +3,6 @@
 import javax.swing.JPanel;
 import javax.swing.BorderFactory;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.util.ArrayList;
-
-import shapes.*;
-
 /**
  * 
  * @author Kyle Bye

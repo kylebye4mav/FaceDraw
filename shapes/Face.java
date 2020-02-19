@@ -1,7 +1,6 @@
 package shapes;
 
 import javax.swing.JPanel;
-
 import java.awt.Color;
 import java.awt.Graphics;
 
@@ -77,7 +76,7 @@ public final class Face extends Oval {
     public String toString() {
 
         return String.format(
-            "%sFace(\n\t(faceState: %d); \n\t(eyes[0]: %s); \n\t(eyes[1]: %s); \n\t(mouth: %s) );\n", 
+            "%sFace(\n\t(faceState: %d); \n\t(eyes[0]: %s); \n\t(eyes[1]: %s); \n\t(mouth: %s); \n\t);\n", 
             super.toString(), faceState, eyes[0].toString(), eyes[1].toString(),
             mouth.toString()
         );
@@ -123,12 +122,29 @@ public final class Face extends Oval {
                 new Oval(diameterX - 2*(diameterX/4), diameterY/4, radiusXIn/4, radiusYIn/4, Color.WHITE)
             }
         );
-        setMouth(
-            new SemiOval(
-                diameterX/4, diameterY - (diameterY/3), radiusXIn/2, radiusYIn/2, Color.WHITE, SemiOval.DIRECTION_UP
-                )
-        );
-       
+
+        // Initialize the mouth oval
+        if (faceStateIn == Face.NEUTRAL_STATE) {
+
+            setMouth(new Rectangle(diameterX/4, diameterY - (diameterY/3), diameterX/2, diameterY/12, Color.WHITE));
+
+        }
+        else {
+            SemiOval mouthOval;
+            if (faceStateIn == Face.SAD_STATE) {
+                mouthOval = new SemiOval(
+                    diameterX/4, diameterY/3, radiusXIn/2, radiusYIn/2, Color.WHITE, SemiOval.DIRECTION_DOWN
+                    );
+            }
+            else {
+                mouthOval = new SemiOval(
+                    diameterX/4, diameterY - (diameterY/3), radiusXIn/2, radiusYIn/2, Color.WHITE, SemiOval.DIRECTION_UP
+                    );   
+            }
+
+            setMouth(mouthOval);
+                
+        }
         for (Oval eye : eyes) add(eye);
         add(mouth);
 
