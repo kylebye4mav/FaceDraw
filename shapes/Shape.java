@@ -11,7 +11,7 @@ import java.awt.Graphics;
 @SuppressWarnings("serial")
 public abstract class Shape extends JPanel {
 
-    // Members
+    // Properties
     private Color color;
 
     // Getters 

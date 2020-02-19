@@ -8,24 +8,25 @@ import java.util.ArrayList;
 import shapes.*;
 
 /**
+ * This class 
  * @author Kyle Bye
  */
 @SuppressWarnings("serial")
-public class FaceDrawFrame extends JFrame {
+public final class FaceDrawFrame extends JFrame {
 
-	public ArrayList<Shape> faceList;
+	public ArrayList<Face> faceList;
 
 	// Getters
-	public ArrayList<Shape> getFaceList() {
+	public ArrayList<Face> getFaceList() {
 		
 		return faceList;
 
 	}
 
 	// Setters
-	public void setFaceList(ArrayList<Shape> faceListIn) {
+	public void setFaceList(ArrayList<Face> faceListIn) {
 
-		if (faceListIn == null) faceList = new ArrayList<Shape>();
+		if (faceListIn == null) faceList = new ArrayList<Face>();
 		else faceList = faceListIn;
 
 	}
@@ -55,7 +56,6 @@ public class FaceDrawFrame extends JFrame {
 		FaceDrawPanel faceDrawPanel = new FaceDrawPanel();
 		for (Shape s : faceList) faceDrawPanel.add(s);
 		contentPane.add(faceDrawPanel, BorderLayout.CENTER);
-		System.out.println("THERE ARE " + faceList.size() + "FACES");
 
 	}
 

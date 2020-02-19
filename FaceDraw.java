@@ -1,8 +1,9 @@
 /**
+ * This program creates a frame with a random amount 
+ * of randomly generated faces.
  * @author Kyle Bye
  */
-public class FaceDraw {
-
+public final class FaceDraw {
 
     public static void main(String[] args) {
 

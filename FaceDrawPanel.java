@@ -1,20 +1,19 @@
-
-// javax.swing packages
 import javax.swing.JPanel;
-import javax.swing.BorderFactory;
 
 /**
+ * This class is essentially the painting canvas
+ * for every instance of <code>Face</code>.
  * 
  * @author Kyle Bye
+ * @see JPanel
  */
 @SuppressWarnings("serial")
-public class FaceDrawPanel extends JPanel {
+public final class FaceDrawPanel extends JPanel {
 
 	public FaceDrawPanel() {
         
         super();
-        setLayout(null);
-        setBorder(BorderFactory.createLineBorder(java.awt.Color.BLACK, 3));
+        setLayout(null); // Using AbsoluteLayout 
         
     }
     
