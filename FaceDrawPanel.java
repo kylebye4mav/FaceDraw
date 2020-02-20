@@ -4,16 +4,21 @@ import javax.swing.JPanel;
  * This class is essentially the painting canvas
  * for every instance of <code>Face</code>.
  * 
- * @author Kyle Bye
+ * @author  Kyle Bye
  * @see JPanel
  */
 @SuppressWarnings("serial")
 public final class FaceDrawPanel extends JPanel {
 
 	public FaceDrawPanel() {
-        
+
+        //  Initialize JPanel
         super();
-        setLayout(null); // Using AbsoluteLayout 
+
+        //  Using absolute layout to put the components
+        //  exactly based on their JComponent's x and y
+        //  values/
+        setLayout(null); 
         
     }
     

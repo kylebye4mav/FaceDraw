@@ -5,14 +5,13 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 /**
- * @author Kyle Bye
+ * @author  Kyle Bye
  * @see JPanel
  */
 @SuppressWarnings("serial")
 public class Rectangle extends Shape {
 
-    
-    // Other Methods
+    //  Other Methods
     @Override
     public void paintComponent(Graphics g) {
 
@@ -32,7 +31,7 @@ public class Rectangle extends Shape {
 
     }
 
-    // Constructors 
+    //  Constructors 
     public Rectangle() {
 
         this(0, 0, 0, 0, Color.WHITE);
@@ -53,6 +52,8 @@ public class Rectangle extends Shape {
 
     public Rectangle(int xIn, int yIn, int widthIn, int heightIn, Color colorIn) {
 
+        //  By default, JPanel is in the shape of Rectangle. So,
+        //  only Shape needs to be initialized.
         super(xIn, yIn, widthIn, heightIn, colorIn);
 
     }

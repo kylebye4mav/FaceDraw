@@ -5,30 +5,30 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 /**
- * @author Kyle Bye
+ * @author  Kyle Bye
  * @see JPanel
  */
 @SuppressWarnings("serial")
 public abstract class Shape extends JPanel {
 
-    // Properties
+    //  Properties
     private Color color;
 
-    // Getters 
+    //  Getters 
     public Color getColor() {
 
         return color;
 
     }
 
-    // Setters
+    //  Setters
     public void setColor(Color colorIn) {
 
         color = colorIn;
 
     }
 
-    // Other Methods
+    //  Other Methods
     @Override
     public void paintComponent(Graphics g) {
 
@@ -46,7 +46,7 @@ public abstract class Shape extends JPanel {
 
     }
 
-    // Constructors 
+    //   Constructors 
     public Shape() {
 
         this(0, 0, 0, 0, Color.WHITE);
@@ -68,11 +68,18 @@ public abstract class Shape extends JPanel {
     public Shape(int xIn, int yIn, int widthIn, int heightIn, Color colorIn) {
 
         super();
+        
+        //  Using absolute layout to set the shape anywhere within a JPanel.
         setLayout(null);
         setBounds(xIn, yIn, widthIn, heightIn);
         setColor(colorIn);
+        
+        //  Setting this instance of shape to be able to be overdrawn and setting
+        //  the background color to transparent to only show the shape desired. 
         setBackground(new Color(0,0,0,0));
         setOpaque(true);
+
+        //  Showing the shape.
         setVisible(true);
 
     }

@@ -5,7 +5,11 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 /**
- * @author Kyle Bye
+ * This class represents a face with a 2 length
+ * array of eyes that are Oval instances along with
+ * a mouth that is a Shape of some kind.
+ * 
+ * @author  Kyle Bye
  * @see Oval
  * @see SemiOval
  * @see JPanel
@@ -13,17 +17,18 @@ import java.awt.Graphics;
 @SuppressWarnings("serial")
 public final class Face extends Oval {
 
-    // Static Properties
+    //  Static Properties that affect 
+    //  the motuh shape.
     public final static int SAD_STATE = 0;
     public final static int NEUTRAL_STATE = 1;
     public final static int HAPPY_STATE = 2;
 
-    // Properties
+    //  Properties
     private int faceState;
     private Oval[] eyes;
     private Shape mouth;
 
-    // Getters
+    //  Getters
     public Oval[] getEyes() {
 
         return eyes;
@@ -42,7 +47,7 @@ public final class Face extends Oval {
 
     }
 
-    // Setters 
+    //  Setters 
     public void setEyes(Oval[] eyesIn) {
 
         if (eyesIn.length == 2) {
@@ -64,7 +69,7 @@ public final class Face extends Oval {
 
     }
 
-    // Other Methods
+    //   Other Methods
     public void paintComponent(Graphics g) {
 
         super.paintComponent(g);
@@ -83,7 +88,7 @@ public final class Face extends Oval {
 
     }
 
-    // Constructors
+    //   Constructors
     public Face() {
 
         this(0, 0, 0, 0, Color.WHITE, NEUTRAL_STATE);
@@ -110,41 +115,60 @@ public final class Face extends Oval {
 
     public Face(int xIn, int yIn, int radiusXIn, int radiusYIn, Color colorIn, int faceStateIn) {
 
+        //  Initialize the Face's parent Oval.
         super(xIn, yIn, radiusXIn, radiusYIn, colorIn);
 
+        //  Diameter is twice the radius in both the x and y.
         int diameterX = getWidth();
         int diameterY = getHeight();
 
+        //  Initialize the emotion or faceState of this Face instance.
         setFaceState(faceStateIn);
-        setEyes(
-            new Oval[] {
-                new Oval(diameterX/4, diameterY/4, radiusXIn/4, radiusYIn/4, Color.WHITE),
-                new Oval(diameterX - 2*(diameterX/4), diameterY/4, radiusXIn/4, radiusYIn/4, Color.WHITE)
-            }
-        );
 
-        // Initialize the mouth oval
+        //  Initialize the eyes of the Face that are Oval objects.
+        Oval leftEye = new Oval(diameterX/4, diameterY/4, radiusXIn/4, radiusYIn/4, Color.WHITE);
+        Oval rightEye = new Oval(diameterX - 2*(diameterX/4), diameterY/4, radiusXIn/4, radiusYIn/4, Color.WHITE);
+        setEyes( new Oval[] {leftEye, rightEye} );
+
+        //  Initialize the mouth shape of the Face.
         if (faceStateIn == Face.NEUTRAL_STATE) {
 
-            setMouth(new Rectangle(diameterX/4, diameterY - (diameterY/3), diameterX/2, diameterY/12, Color.WHITE));
+            //   A neutral state contructs a straight mouth in the form of a rectangle: (o_o) 
+            Rectangle straightMouth = new Rectangle(
+                diameterX/4, diameterY - (diameterY/3), diameterX/2, diameterY/12, Color.WHITE
+                );
+            setMouth(straightMouth);
 
         }
         else {
+
+            //  Since the face state is a happy state of a sad state,
+            //  the mouth will be a semi oval drawn like a smile or a frown.
             SemiOval mouthOval;
+
+
             if (faceStateIn == Face.SAD_STATE) {
+
+                //  Set the mouthOval to a SemiOval instance with its flat side facing down.
                 mouthOval = new SemiOval(
                     diameterX/4, diameterY/3, radiusXIn/2, radiusYIn/2, Color.WHITE, SemiOval.DIRECTION_DOWN
                     );
+
             }
             else {
+
+                //  Set the mouthOval to a SemiOval instance with tis flat side facing up.
                 mouthOval = new SemiOval(
                     diameterX/4, diameterY - (diameterY/3), radiusXIn/2, radiusYIn/2, Color.WHITE, SemiOval.DIRECTION_UP
                     );   
+
             }
 
             setMouth(mouthOval);
                 
         }
+
+        //  Add the eyes and the mouth to this Face component.
         for (Oval eye : eyes) add(eye);
         add(mouth);
 

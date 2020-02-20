@@ -5,22 +5,22 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 /**
- * @author Kyle Bye
+ * @author  Kyle Bye
  * @see Shape
  * @see JPanel
  */
 @SuppressWarnings("serial")
 public class Oval extends Shape {
 
-    // Properties
+    //  Properties
     private int radiusX;
     private int radiusY;
 
-    // Getters
+    //  Getters
     public int getRadiusX() { return radiusX; }
     public int getRadiusY() { return radiusY; }
 
-    // Setters
+    //  Setters
     public void setRadiusX(int radiusXIn) { 
         if (radiusXIn >= 0) radiusX = radiusXIn;
     }
@@ -29,7 +29,7 @@ public class Oval extends Shape {
         if (radiusYIn >= 0) radiusY = radiusYIn;
     }
 
-    // Other Methods
+    //  Other Methods
     @Override
     public void paintComponent(Graphics g) {
 
@@ -50,7 +50,7 @@ public class Oval extends Shape {
 
     }
 
-    // Constructors
+    //  Constructors
     public Oval() {
 
         this(0, 0, 0, 0, Color.WHITE);
@@ -71,7 +71,11 @@ public class Oval extends Shape {
 
     public Oval(int xIn, int yIn, int radiusXIn, int radiusYIn, Color colorIn) {
 
+        //  Initalize the Oval's parent class uding the diameters as
+        //  the lengths of the shape.
         super(xIn, yIn, radiusXIn*2, radiusYIn*2, colorIn); 
+
+        //  Initialize this instance's radiuses.
         setRadiusX(radiusXIn);
         setRadiusY(radiusYIn);  
 

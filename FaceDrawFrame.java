@@ -1,29 +1,33 @@
-
-// javax.swing packages
 import javax.swing.JFrame;
-
 import java.awt.Container;
 import java.awt.BorderLayout;
 import java.util.ArrayList;
 import shapes.*;
 
 /**
- * This class 
- * @author Kyle Bye
+ * This class is a JFrame that contains a FaceDrawPanel
+ * that is a drawing canvas for an ArrayList of Face objects.
+ * 
+ * @author	Kyle Bye
+ * @see ArrayList
+ * @see Face
+ * @see FaceDrawUtil
+ * @see	JFrame
  */
 @SuppressWarnings("serial")
 public final class FaceDrawFrame extends JFrame {
+	
+	// 	Properties
+	private ArrayList<Face> faceList;
 
-	public ArrayList<Face> faceList;
-
-	// Getters
+	// 	Getters
 	public ArrayList<Face> getFaceList() {
 		
 		return faceList;
 
 	}
 
-	// Setters
+	// 	Setters
 	public void setFaceList(ArrayList<Face> faceListIn) {
 
 		if (faceListIn == null) faceList = new ArrayList<Face>();
@@ -31,7 +35,7 @@ public final class FaceDrawFrame extends JFrame {
 
 	}
 
-	// Constructors
+	// 	Constructors
 	public FaceDrawFrame() {
 
 		this(0, 0);
@@ -41,18 +45,20 @@ public final class FaceDrawFrame extends JFrame {
 
 	public FaceDrawFrame(int widthIn, int heightIn) {
 
-		// Intialize this frame's properties.
+		// 	Intialize this frame's properties.
 		super();
-		setTitle("ABOMINATIONN...");
+		setTitle("FaceDraw");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, widthIn, heightIn);
+
+		// 	Initialize the faceList in this instance.
 		setFaceList(FaceDrawUtil.generateRandomFaces(widthIn-widthIn/2, heightIn-heightIn/2));
 		
 
 		Container contentPane = getContentPane();
 
-		// Instantiate and add a FaceDrawPanel to this
-		// frame.
+		// 	Instantiate and add a FaceDrawPanel to this
+		// 	frame.
 		FaceDrawPanel faceDrawPanel = new FaceDrawPanel();
 		for (Shape s : faceList) faceDrawPanel.add(s);
 		contentPane.add(faceDrawPanel, BorderLayout.CENTER);

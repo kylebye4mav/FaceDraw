@@ -4,17 +4,24 @@ import java.util.Random;
 import shapes.*;
 
 /**
- * @author Kyle Bye
+ * This class contains static methods that 
+ * generate random primative types or objects
+ * like integers, Color objects, and an ArrayList
+ * of Face objects.
+ * 
+ * @author  Kyle Bye
+ * @see ArrayList
+ * @see Color
+ * @see Random
  */
 public final class FaceDrawUtil {
 
-    // Static Properties
+    //  Static Properties
     private final static Color[] colorPallete = new Color[] {
         Color.BLUE, Color.GREEN, Color.YELLOW, Color.RED, Color.CYAN,
         Color.BLACK, Color.DARK_GRAY, Color.LIGHT_GRAY, Color.ORANGE,
         Color.PINK
     };
-
     private final static Random random = new Random();
 
     /**
