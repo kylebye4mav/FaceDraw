@@ -95,21 +95,21 @@ public final class Face extends Oval {
 
     }
 
-    public Face(int lengthIn, int widthIn) {
+    public Face(int radiusXIn, int radiusYIn) {
 
-        this(0, 0, lengthIn, widthIn, Color.WHITE, NEUTRAL_STATE);
+        this(0, 0, radiusXIn, radiusYIn, Color.WHITE, NEUTRAL_STATE);
 
     }
 
-    public Face(int xIn, int yIn, int lengthIn, int widthIn) {
+    public Face(int xIn, int yIn, int radiusXIn, int radiusYIn) {
 
-        this(xIn, yIn, lengthIn, widthIn, Color.WHITE, NEUTRAL_STATE);
+        this(xIn, yIn, radiusXIn, radiusYIn, Color.WHITE, NEUTRAL_STATE);
 
     }
     
-    public Face(int xIn, int yIn, int lengthIn, int widthIn, Color colorIn) {
+    public Face(int xIn, int yIn, int radiusXIn, int radiusYIn, Color colorIn) {
 
-        this(xIn, yIn, lengthIn, widthIn, colorIn, NEUTRAL_STATE);
+        this(xIn, yIn, radiusXIn, radiusYIn, colorIn, NEUTRAL_STATE);
 
     }
 
